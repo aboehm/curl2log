@@ -22,7 +22,7 @@ PROG="curl2log"
 
 print_help() {
 	echo "Measure download with curl"
-	echo "syntax: $PROG [URL [URL [...]]]"
+	echo "syntax: $PROG URL [URL [...]]"
 	echo ""
 	echo "        URL  Download location"
 	echo ""
