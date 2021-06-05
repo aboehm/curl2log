@@ -1,231 +1,117 @@
 {
-	"order" : 0,
-	"template" : "curl2log-*",
-	"settings" : {
-		"index" : {
-			"refresh_interval" : "5s"
-		}
-	},
 	"mappings" : {
-		"curl" : {
-			"properties" : {
-				"content_type" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
+		"properties" : {
+			"timestamp" : {
+				"type" : "date"
+			},
+			"curl" : {
+				"properties" : {
+					"content_type" : {
+						"type" : "keyword",
+						"ignore_above": 256
 					},
-					"fielddata" : {
-						"format" : "disabled"
+					"curl_version" : {
+						"type" : "keyword",
+						"ignore_above": 256
 					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
+					"filename_effective" : {
+						"type" : "keyword",
+						"ignore_above": 256
+					},
+					"ftp_entry_path" : {
+						"type" : "keyword",
+						"ignore_above": 256
+					},
+					"http_code" : {
+						"type" : "keyword",
+						"ignore_above": 4
+					},
+					"http_connect" : {
+						"type" : "keyword",
+						"ignore_above": 256
+					},
+					"http_version" : {
+						"type" : "keyword",
+						"ignore_above": 8
+					},
+					"local_ip" : {
+						"type" : "ip"
+					},
+					"local_port" : {
+						"type" : "integer"
+					},
+					"num_connects" : {
+						"type" : "integer"
+					},
+					"num_headers" : {
+						"type" : "short"
+					},
+					"num_redirects" : {
+						"type" : "byte"
+					},
+					"proxy_ssl_verify_result" : {
+						"type" : "byte"
+					},
+					"redirect_url" : {
+						"type" : "keyword",
+						"ignore_above": 256
+					},
+					"remote_ip" : {
+						"type" : "ip"
+					},
+					"remote_port" : {
+						"type" : "integer"
+					},
+					"scheme" : {
+						"type" : "keyword",
+						"ignore_above": 8
+					},
+					"size_download" : {
+						"type" : "long"
+					},
+					"size_header" : {
+						"type" : "long"
+					},
+					"size_request" : {
+						"type" : "long"
+					},
+					"size_upload" : {
+						"type" : "long"
+					},
+					"speed_download" : {
+						"type" : "double"
+					},
+					"speed_upload" : {
+						"type" : "double"
+					},
+					"ssl_verify_result" : {
+						"type" : "byte"
+					},
+					"time_appconnect" : {
+						"type" : "double"
+					},
+					"time_connect" : {
+						"type" : "double"
+					},
+					"time_namelookup" : {
+						"type" : "double"
+					},
+					"time_pretransfer" : {
+						"type" : "double"
+					},
+					"time_redirect" : {
+						"type" : "double"
+					},
+					"time_starttransfer" : {
+						"type" : "double"
+					},
+					"time_total" : {
+						"type" : "double"
+					},
+					"url_effective" : {
+						"type" : "keyword",
+						"ignore_above": 256
 					}
-				},
-				"filename_effective" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"ftp_entry_path" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"http_code" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"http_connect" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"local_ip" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"local_port" : {
-					"type" : "long"
-				},
-				"num_connects" : {
-					"type" : "long"
-				},
-				"num_redirects" : {
-					"type" : "long"
-				},
-				"redirect_url" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"remote_ip" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"remote_geoip" : {
-					"dynamic" : "true",
-					"properties" : {
-						"ip" : {
-							"type" : "ip"
-						},
-						"latitude" : {
-							"type" : "float"
-						},
-						"location" : {
-							"type" : "geo_point"
-						},
-						"longitude" : {
-							"type" : "float"
-						}
-					}
-				},
-				"remote_port" : {
-					"type" : "long"
-				},
-				"size_download" : {
-					"type" : "long"
-				},
-				"size_header" : {
-					"type" : "long"
-				},
-				"size_request" : {
-					"type" : "long"
-				},
-				"size_upload" : {
-					"type" : "long"
-				},
-				"speed_download" : {
-					"type" : "double"
-				},
-				"speed_upload" : {
-					"type" : "double"
-				},
-				"ssl_verify_result" : {
-					"type" : "long"
-				},
-				"time_appconnect" : {
-					"type" : "double"
-				},
-				"time_connect" : {
-					"type" : "double"
-				},
-				"time_namelookup" : {
-					"type" : "double"
-				},
-				"time_pretransfer" : {
-					"type" : "double"
-				},
-				"time_redirect" : {
-					"type" : "double"
-				},
-				"time_starttransfer" : {
-					"type" : "double"
-				},
-				"time_total" : {
-					"type" : "double"
-				},
-				"url_effective" : {
-					"type" : "string",
-					"norms" : {
-						"enabled" : false
-					},
-					"fielddata" : {
-						"format" : "disabled"
-					},
-					"fields" : {
-						"raw" : {
-							"type" : "string",
-							"index" : "not_analyzed",
-							"ignore_above" : 256
-						}
-					}
-				},
-				"timestamp" : {
-					"type" : "date"
 				}
 			}
 		}
