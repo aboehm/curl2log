@@ -5,7 +5,6 @@ Print a JSON formated output of curl
 ## help
 
 ```
-Measure download with curl
 syntax: curl2log <regular curl parameters like urls, headers, credentials, ...>
 ```
 
