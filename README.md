@@ -45,8 +45,9 @@ Measure download statistics from google.de (JSON-Output is prettifed)
     "time_redirect": 0.000,
     "time_starttransfer": 0.147,
     "time_total": 0.147,
-    "url_effective": "http://google.de/" 
-    }, 
+    "url_effective": "http://google.de/",
+    "timestamp": "2021-06-05T20:48:54+02:00"
+  }, 
   "type": "curl2log" 
 }
 ```
