@@ -18,13 +18,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 export LC_ALL=C
-PROG="curl2log"
+TIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S%:z)
 
 print_help() {
-	echo "Measure download with curl"
-	echo "syntax: $PROG URL [URL [...]]"
-	echo ""
-	echo "        URL  Download location"
+	echo "Print curl logs into json"
+	echo "syntax: $0 (curl arguments)"
 	echo ""
 	echo "$PROG, Copyright (C) 2016 Alexander Böhm <alxndr.boehm@gmail.com>"
 	echo "Licensed under GPLv2. See source distribution for detailed"
@@ -32,15 +30,13 @@ print_help() {
 	echo ""
 }
 
-
 if [ $# -lt 1 ] ; then
 	print_help
 	exit 0
 fi
 
-URL_STRING=""
-for url in $* ; do
-	URL_STRING="$URL_STRING -s -o /dev/null $url"
-done
-
-curl -w '{ "curl": { "content_type": "%{content_type}", "filename_effective": "%{filename_effective}", "ftp_entry_path": "%{ftp_entry_path}", "http_code": "%{http_code}", "http_connect": "%{http_connect}", "local_ip": "%{local_ip}", "local_port": %{local_port}, "num_connects": %{num_connects}, "num_redirects": %{num_redirects}, "redirect_url": "%{redirect_url}", "remote_ip": "%{remote_ip}", "remote_port": %{remote_port}, "size_download": %{size_download}, "size_header": %{size_header}, "size_request": %{size_request}, "size_upload": %{size_upload}, "speed_download": %{speed_download}, "speed_upload": %{speed_upload}, "ssl_verify_result": %{ssl_verify_result}, "time_appconnect": %{time_appconnect}, "time_connect": %{time_connect}, "time_namelookup": %{time_namelookup}, "time_pretransfer": %{time_pretransfer}, "time_redirect": %{time_redirect}, "time_starttransfer": %{time_starttransfer}, "time_total": %{time_total}, "url_effective": "%{url_effective}" }, "type": "curl2log" }\n' $URL_STRING
+curl -w '{
+	"timestamp": "'"${TIMESTAMP}"'",
+	"curl": "%{json}
+}\n' \
+	$*
