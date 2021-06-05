@@ -37,6 +37,6 @@ fi
 
 curl -w '{
 	"timestamp": "'"${TIMESTAMP}"'",
-	"curl": "%{json}
+	"curl": %{json}
 }\n' \
 	$*
