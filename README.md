@@ -1,14 +1,12 @@
 # curl2log
 
-Measure a downloadwith curl and print statistics in JSON.
+Print a JSON formated output of curl
 
 ## help
 
 ```
 Measure download with curl
-syntax: curl2log URL [URL [...]]
-
-        URL  Download location
+syntax: curl2log <regular curl parameters like urls, headers, credentials, ...>
 ```
 
 ## example
@@ -54,4 +52,9 @@ Measure download statistics from google.de (JSON-Output is prettifed)
 
 ## Usage with Elasticsearch
 
-Install dynamic template _curl2log.json_ into Elasticsearch (https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-templates.html) and put data into _curl2log_-Index.
+The mapping for the index is in _curl2log.json_. For further details see [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/explicit-mapping.html).
+
+Example for creating an index *my-index*:
+```
+curl -XPUT http://elasticsearch:9200/my-index -d @curl2log.json
+```
